@@ -5,7 +5,7 @@ class DataPreprocessing:
     def __init__(self, filename):
         self.filename = filename
 
-    def labellingData(self):
+    def labellingData(self, n='full', save=True):
         data_hooligans = pd.read_csv(self.filename)
         data_hooligans_fulltext = data_hooligans['full_text']
 
@@ -20,15 +20,19 @@ class DataPreprocessing:
                 print('\n')
 
             labeled_data = pd.DataFrame({'text': text_series, 'label':labels})
+                
             return labeled_data
-
-        labeled_data = label_data(data_hooligans_fulltext)
+        
+        if (type(n) == str):
+            labeled_data = label_data(data_hooligans_fulltext)
+        else:
+            labeled_data = label_data(data_hooligans_fulltext[:n])
 
         return labeled_data
     
-    def clean_text(self, col_name = 'full_text'):
-        data_hooligans = pd.read_csv(self.filename)
-        data_hooligans_fulltext = data_hooligans[col_name]
+    def clean_text(self, filename, col_name='text'):
+        data = pd.read_csv(filename)
+        data_fulltext = data[col_name]
         def cleanUp(text):
             replacements = {
                 r'\blg\b': 'lagi',
@@ -77,5 +81,6 @@ class DataPreprocessing:
             # Hapus spasi ekstra di awal/akhir teks
             return text.strip()
         
-        return data_hooligans_fulltext.apply(cleanUp)
+        data[col_name] = data[col_name].apply(cleanUp)
+        return data
         
