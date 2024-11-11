@@ -26,9 +26,9 @@ class DataPreprocessing:
 
         return labeled_data
     
-    def clean_text(self, col_name):
+    def clean_text(self, col_name = 'full_text'):
         data_hooligans = pd.read_csv(self.filename)
-        data_hooligans_fulltext = data_hooligans['full_text']
+        data_hooligans_fulltext = data_hooligans[col_name]
         def cleanUp(text):
             replacements = {
                 r'\blg\b': 'lagi',
