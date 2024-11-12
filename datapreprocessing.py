@@ -39,7 +39,7 @@ class DataPreprocessing:
                 r'\bbgt\b': 'sangat',
                 r'\bsm\b': 'sama',
                 r'\bntu\b': 'itu',
-                r'\+\b': '',                  # Hapus tanda plus
+                r'\+\b': '',                # Hapus tanda plus
                 r'\bkyk\b': 'kayak',
                 r'\bak\b': 'aku',
                 r'\bato\b': 'atau',

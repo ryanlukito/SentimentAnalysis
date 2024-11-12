@@ -1,6 +1,6 @@
 from datapreprocessing import DataPreprocessing
 
-teguh_barata_aji = DataPreprocessing(filename='data/horeg.csv')
+teguh_barata_aji = DataPreprocessing(filename='data_horeg_alex.csv')
 
 
 # labeling = teguh_barata_aji.labellingData(5)
